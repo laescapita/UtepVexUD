@@ -18,7 +18,7 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-
+#include "userFunctions.h"
 using namespace vex;
 
 // A global instance of competition
@@ -87,8 +87,11 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void usercontrol(void) {
+void userControl( void )
+{
   Brain.Screen.print("Mecanum Drive");
+
+  //setDriveSpeed();
 
   //Positions
   int Ax1Pos = Controller1.Axis1.position();
@@ -96,15 +99,12 @@ void usercontrol(void) {
   int Ax4Pos = Controller1.Axis4.position();
 
 
-  //Infinite Loop
-  while(true)
+ // Infinite Loop
+  while(1)
   {
     //Actual Joystick Drive
-    FRightMotor.spin(vex::directionType::fwd, (Ax3Pos - Ax1Pos - Ax4Pos), vex::velocityUnits::pct);
-    FLeftMotor.spin(vex::directionType::fwd, (Ax3Pos + Ax1Pos + Ax4Pos), vex::velocityUnits::pct);
-    BRightMotor.spin(vex::directionType::fwd, (Ax3Pos - Ax1Pos + Ax4Pos), vex::velocityUnits::pct);
-    BLeftMotor.spin(vex::directionType::fwd, (Ax3Pos + Ax1Pos - Ax4Pos), vex::velocityUnits::pct);
-
+    joyStickDrive(Ax1Pos, Ax3Pos, Ax4Pos);
+    
   }
 
  vex::task::sleep(20);
@@ -117,7 +117,7 @@ void usercontrol(void) {
 int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
-  Competition.drivercontrol(usercontrol);
+  Competition.drivercontrol(userControl);
 
   // Run the pre-autonomous function.
   pre_auton();
