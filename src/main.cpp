@@ -106,20 +106,19 @@ void autonRed(void) {
 
 void userControl( void )
 {
-  Brain.Screen.print("Mecanum Drive");
+  Brain.Screen.newLine();
+  Brain.Screen.print("Mecanum Drive - Javi is always watching");
 
   //setDriveSpeed();
 
   //Positions
-  int Ax1Pos = Controller1.Axis1.position();
-  int Ax3Pos = Controller1.Axis3.position();
-
- // Infinite Loop
+  //Infinite Loop
   while(1)
   {
-    //Actual Joystick Drive
-    joyStickDrive(Ax1Pos, Ax3Pos);
-    
+      int Ax1Pos = Controller1.Axis1.position();
+      int Ax3Pos = Controller1.Axis3.position();
+      int Ax4Pos = Controller1.Axis4.position();
+
   }
 
  vex::task::sleep(20);

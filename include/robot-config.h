@@ -4,9 +4,11 @@ extern brain Brain;
 
 // VEXcode devices
 extern motor FLeftMotor;
-//extern motor BLeftMotor;
 extern motor FRightMotor;
-//extern motor BRightMotor;
+extern motor LeftLiftMotor;
+extern motor RightLiftMotor;
+extern motor ClawLeftMotor;
+extern motor ClawRightMotor;
 extern controller Controller1;
 
 /**
