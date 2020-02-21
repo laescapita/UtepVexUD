@@ -54,11 +54,28 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void autonomous(void) {
-  // ..........................................................................
-  // Insert autonomous user code here.
- 
-  // ..........................................................................
+void blueAuton(void) {
+
+  Brain.Screen.print("Autonmous is-a-go");
+
+  //Sets Speed of every motor 
+  FLeftMotor.setVelocity(100, vex::velocityUnits::pct);
+ // BLeftMotor.setVelocity(100, vex::velocityUnits::pct);
+  FRightMotor.setVelocity(100, vex::velocityUnits::pct);
+ // BRightMotor.setVelocity(100, vex::velocityUnits::pct);
+
+  //Move Forward
+  FLeftMotor.spin(forward);
+ // BLeftMotor.spin(forward);
+  FRightMotor.spin(forward);
+ // BRightMotor.spin(forward);
+
+  Brain.Screen.newLine();
+  Brain.Screen.print("Autonmous has ended");
+}
+
+void redAuton(void) {
+  
   Brain.Screen.print("Autonmous is-a-go");
 
   //Sets Speed of every motor 
@@ -96,14 +113,12 @@ void userControl( void )
   //Positions
   int Ax1Pos = Controller1.Axis1.position();
   int Ax3Pos = Controller1.Axis3.position();
-  int Ax4Pos = Controller1.Axis4.position();
-
 
  // Infinite Loop
   while(1)
   {
     //Actual Joystick Drive
-    joyStickDrive(Ax1Pos, Ax3Pos, Ax4Pos);
+    joyStickDrive(Ax1Pos, Ax3Pos);
     
   }
 
@@ -116,7 +131,7 @@ void userControl( void )
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(autonomous);
+  Competition.autonomous(blueAuton);
   Competition.drivercontrol(userControl);
 
   // Run the pre-autonomous function.

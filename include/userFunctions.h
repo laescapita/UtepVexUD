@@ -1,7 +1,7 @@
 #include "vex.h"
 #include "robot-config.h"
 
-void joyStickDrive(int Ax1Pos,int Ax3Pos, int Ax4Pos)
+void joyStickDrive(int Ax1Pos,int Ax3Pos)
 { 
     if(Controller1.Axis3.value()){ 
     FRightMotor.spin(vex::directionType::fwd,Controller1.Axis3.value(), vex::velocityUnits::pct);
