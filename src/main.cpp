@@ -63,15 +63,15 @@ void autonomous(void) {
 
   //Sets Speed of every motor 
   FLeftMotor.setVelocity(100, vex::velocityUnits::pct);
-  BLeftMotor.setVelocity(100, vex::velocityUnits::pct);
+ // BLeftMotor.setVelocity(100, vex::velocityUnits::pct);
   FRightMotor.setVelocity(100, vex::velocityUnits::pct);
-  BRightMotor.setVelocity(100, vex::velocityUnits::pct);
+ // BRightMotor.setVelocity(100, vex::velocityUnits::pct);
 
   //Move Forward
   FLeftMotor.spin(forward);
-  BLeftMotor.spin(forward);
+ // BLeftMotor.spin(forward);
   FRightMotor.spin(forward);
-  BRightMotor.spin(forward);
+ // BRightMotor.spin(forward);
 
   Brain.Screen.newLine();
   Brain.Screen.print("Autonmous has ended");
