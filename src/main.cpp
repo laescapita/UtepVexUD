@@ -22,7 +22,7 @@
 using namespace vex;
 
 // A global instance of competition
-competition Competition;
+vex::competition Competition;
 
 // define your global instances of motors and other devices here
 
@@ -54,7 +54,7 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void blueAuton(void) {
+void autonBlue(void) {
 
   Brain.Screen.print("Autonmous is-a-go");
 
@@ -74,7 +74,7 @@ void blueAuton(void) {
   Brain.Screen.print("Autonmous has ended");
 }
 
-void redAuton(void) {
+void autonRed(void) {
   
   Brain.Screen.print("Autonmous is-a-go");
 
@@ -131,7 +131,7 @@ void userControl( void )
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(blueAuton);
+  Competition.autonomous(autonBlue);
   Competition.drivercontrol(userControl);
 
   // Run the pre-autonomous function.
