@@ -19,6 +19,7 @@
 
 #include "vex.h"
 #include "userFunctions.h"
+#include "autoFunctions.h"
 using namespace vex;
 
 // A global instance of competition
@@ -58,17 +59,7 @@ void autonBlue(void) {
 
   Brain.Screen.print("Autonmous is-a-go");
 
-  //Sets Speed of every motor 
-  FLeftMotor.setVelocity(100, vex::velocityUnits::pct);
- // BLeftMotor.setVelocity(100, vex::velocityUnits::pct);
-  FRightMotor.setVelocity(100, vex::velocityUnits::pct);
- // BRightMotor.setVelocity(100, vex::velocityUnits::pct);
-
-  //Move Forward
-  FLeftMotor.spin(forward);
- // BLeftMotor.spin(forward);
-  FRightMotor.spin(forward);
- // BRightMotor.spin(forward);
+  moveForward(100, 23, rev);
 
   Brain.Screen.newLine();
   Brain.Screen.print("Autonmous has ended");
@@ -78,17 +69,7 @@ void autonRed(void) {
   
   Brain.Screen.print("Autonmous is-a-go");
 
-  //Sets Speed of every motor 
-  FLeftMotor.setVelocity(100, vex::velocityUnits::pct);
- // BLeftMotor.setVelocity(100, vex::velocityUnits::pct);
-  FRightMotor.setVelocity(100, vex::velocityUnits::pct);
- // BRightMotor.setVelocity(100, vex::velocityUnits::pct);
-
-  //Move Forward
-  FLeftMotor.spin(forward);
- // BLeftMotor.spin(forward);
-  FRightMotor.spin(forward);
- // BRightMotor.spin(forward);
+  moveForward(100, 23, rev);
 
   Brain.Screen.newLine();
   Brain.Screen.print("Autonmous has ended");
@@ -117,7 +98,34 @@ void userControl( void )
   {
       int Ax1Pos = Controller1.Axis1.position();
       int Ax3Pos = Controller1.Axis3.position();
-      int Ax4Pos = Controller1.Axis4.position();
+
+      joyStickDrive( Ax1Pos,  Ax3Pos);
+      
+      if(Controller1.ButtonL1.pressing())
+      {
+        clawClose();
+      }
+      else if(Controller1.ButtonL2.pressing())
+      {
+        clawOpen();
+      }
+      else
+      {
+        clawStop();
+      }
+
+      if(Controller1.ButtonR1.pressing())
+      {
+        liftUp();
+      }
+      else if(Controller1.ButtonR2.pressing())
+      {
+        liftDown();
+      }
+      else
+      {
+        liftStop();
+      }
 
   }
 
