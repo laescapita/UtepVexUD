@@ -57,9 +57,11 @@ void pre_auton(void) {
 
 void autonBlue(void) {
 
-  Brain.Screen.print("Autonmous is-a-go");
+  Brain.Screen.print("Blue Autonmous is-a-go");
 
-  moveForward(100, 23, rev);
+  moveForward(50, 3, rev);
+
+  moveBack(50, 2, rev);
 
   Brain.Screen.newLine();
   Brain.Screen.print("Autonmous has ended");
@@ -67,9 +69,11 @@ void autonBlue(void) {
 
 void autonRed(void) {
   
-  Brain.Screen.print("Autonmous is-a-go");
+  Brain.Screen.print("Red Autonmous is-a-go");
 
-  moveForward(100, 23, rev);
+  moveForward(50, 3, rev);
+
+  moveBack(50, 2, rev);
 
   Brain.Screen.newLine();
   Brain.Screen.print("Autonmous has ended");
@@ -96,10 +100,14 @@ void userControl( void )
   //Infinite Loop
   while(1)
   {
-      int Ax1Pos = Controller1.Axis1.position();
+      int Ax2Pos = Controller1.Axis2.position();
       int Ax3Pos = Controller1.Axis3.position();
 
-      joyStickDrive( Ax1Pos,  Ax3Pos);
+      joyStickDrive( Ax2Pos,  Ax3Pos);
+      // if(Controller1.ButtonDown.pressing())
+      // {
+      //   autonBlue();
+      // }
       
       if(Controller1.ButtonL1.pressing())
       {
@@ -114,11 +122,11 @@ void userControl( void )
         clawStop();
       }
 
-      if(Controller1.ButtonR1.pressing())
+      if(Controller1.ButtonR2.pressing())
       {
         liftUp();
       }
-      else if(Controller1.ButtonR2.pressing())
+      else if(Controller1.ButtonR1.pressing())
       {
         liftDown();
       }
@@ -138,7 +146,7 @@ void userControl( void )
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(autonBlue);
+  Competition.autonomous(autonRed);
   Competition.drivercontrol(userControl);
 
   // Run the pre-autonomous function.

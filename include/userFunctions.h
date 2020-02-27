@@ -1,41 +1,25 @@
 #include "vex.h"
 #include "robot-config.h"
 
-void joyStickDrive(int Ax1Pos,int Ax3Pos)
+void joyStickDrive(int Ax2Pos,int Ax3Pos)
 { 
-    if(Controller1.Axis3.value())
-    {
-      FLeftMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::rpm );
-      FRightMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::rpm );
-    }
-    else if(Controller1.Axis1.value() > 0) //Turn Right
-    {
-      FLeftMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::rpm );
-      FRightMotor.spin(vex::directionType::rev, Controller1.Axis3.value(), vex::velocityUnits::rpm );
-    }
-    else if(Controller1.Axis1.value() < 0) //Turn Left
-    {
-      FLeftMotor.spin(vex::directionType::rev, Controller1.Axis3.value(), vex::velocityUnits::rpm );
-      FRightMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::rpm );
-    }
-    else
-    {
-      FLeftMotor.stop();
-      FRightMotor.stop();
-    }
+    FRightMotor.spin(vex::directionType::fwd, (Ax2Pos )/2, vex::velocityUnits::pct);
+    FLeftMotor.spin(vex::directionType::fwd, (Ax3Pos )/2, vex::velocityUnits::pct);
+    BRightMotor.spin(vex::directionType::fwd, (Ax2Pos )/2, vex::velocityUnits::pct);
+    BLeftMotor.spin(vex::directionType::fwd, (Ax3Pos )/2, vex::velocityUnits::pct);
 
 }
 
 void clawOpen() 
 { 
-    ClawLeftMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
-    ClawRightMotor.spin(vex::directionType::fwd, 100, vex::velocityUnits::pct);
+    ClawLeftMotor.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
+    ClawRightMotor.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
 } 
 
 void clawClose()
 { 
-    ClawLeftMotor.spin(vex::directionType::rev,100, vex::velocityUnits::pct);
-    ClawRightMotor.spin(vex::directionType::rev,100, vex::velocityUnits::pct);
+    ClawLeftMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
+    ClawRightMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
 }
 
 void clawStop()
@@ -46,14 +30,14 @@ void clawStop()
 
 void liftUp()
 { 
-    LeftLiftMotor.spin(vex::directionType::fwd,80, vex::velocityUnits::pct);
-    RightLiftMotor.spin(vex::directionType::fwd,80, vex::velocityUnits::pct);
+    LeftLiftMotor.spin(vex::directionType::fwd,50, vex::velocityUnits::pct);
+    RightLiftMotor.spin(vex::directionType::fwd,50, vex::velocityUnits::pct);
 } 
  
 void liftDown()
 { 
-    ClawLeftMotor.spin(vex::directionType::rev,80, vex::velocityUnits::pct);
-    ClawRightMotor.spin(vex::directionType::rev,80, vex::velocityUnits::pct);
+    LeftLiftMotor.spin(vex::directionType::rev,50, vex::velocityUnits::pct);
+    RightLiftMotor.spin(vex::directionType::rev,50, vex::velocityUnits::pct);
 } 
 
 void liftStop()

@@ -9,11 +9,13 @@ brain  Brain;
 
 // VEXcode device constructors
 motor FLeftMotor = motor(PORT1, ratio18_1, false);
-motor FRightMotor = motor(PORT3, ratio18_1, true);
+motor FRightMotor = motor(PORT4, ratio18_1, true);
+motor BLeftMotor = motor(PORT19, ratio18_1, false);
+motor BRightMotor = motor(PORT20, ratio18_1, true);
 motor LeftLiftMotor = motor(PORT9,ratio18_1,false);
-motor RightLiftMotor = motor(PORT10,ratio18_1,true);
-motor ClawLeftMotor = motor(PORT7,ratio18_1,false);
-motor ClawRightMotor = motor(PORT8,ratio18_1,true);
+motor RightLiftMotor = motor(PORT7,ratio18_1,true);
+motor ClawLeftMotor = motor(PORT8,ratio18_1,false);
+motor ClawRightMotor = motor(PORT10,ratio18_1,true);
 inertial Balance = inertial(PORT3);
 
 controller Controller1 = controller(primary);
