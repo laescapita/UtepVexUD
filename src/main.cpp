@@ -55,29 +55,13 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void autonBlue(void) {
-
-  Brain.Screen.print("Blue Autonmous is-a-go");
-
-  moveForward(50, 3, rev);
-
-  moveBack(50, 2, rev);
-
+void auton(void)
+{
   Brain.Screen.newLine();
-  Brain.Screen.print("Autonmous has ended");
+  autonBlue();
 }
 
-void autonRed(void) {
-  
-  Brain.Screen.print("Red Autonmous is-a-go");
 
-  moveForward(50, 3, rev);
-
-  moveBack(50, 2, rev);
-
-  Brain.Screen.newLine();
-  Brain.Screen.print("Autonmous has ended");
-}
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -104,37 +88,7 @@ void userControl( void )
       int Ax3Pos = Controller1.Axis3.position();
 
       joyStickDrive( Ax2Pos,  Ax3Pos);
-      // if(Controller1.ButtonDown.pressing())
-      // {
-      //   autonBlue();
-      // }
       
-      if(Controller1.ButtonL1.pressing())
-      {
-        clawClose();
-      }
-      else if(Controller1.ButtonL2.pressing())
-      {
-        clawOpen();
-      }
-      else
-      {
-        clawStop();
-      }
-
-      if(Controller1.ButtonR2.pressing())
-      {
-        liftUp();
-      }
-      else if(Controller1.ButtonR1.pressing())
-      {
-        liftDown();
-      }
-      else
-      {
-        liftStop();
-      }
-
   }
 
  vex::task::sleep(20);
@@ -146,7 +100,7 @@ void userControl( void )
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(autonRed);
+  Competition.autonomous(auton);
   Competition.drivercontrol(userControl);
 
   // Run the pre-autonomous function.

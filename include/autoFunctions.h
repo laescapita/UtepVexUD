@@ -48,3 +48,27 @@ void moveForward(double velocity, double seconds)
   }
 
 }
+
+void autonBlue(void) {
+
+  Brain.Screen.print("Blue Autonmous is-a-go");
+
+  moveForward(50, 3, rev);
+
+  moveBack(50, 2, rev);
+
+  Brain.Screen.newLine();
+  Brain.Screen.print("Autonmous has ended");
+}
+
+void autonRed(void) {
+  
+  Brain.Screen.print("Red Autonmous is-a-go");
+
+  moveForward(50, 3, rev);
+
+  moveBack(50, 2, rev);
+
+  Brain.Screen.newLine();
+  Brain.Screen.print("Autonmous has ended");
+}
