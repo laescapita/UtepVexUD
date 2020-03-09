@@ -7,16 +7,6 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// FLeftMotor           motor         1               
-// BLeftMotor           motor         2               
-// FRightMotor          motor         3               
-// BRightMotor          motor         4               
-// Controller1          controller                    
-// ---- END VEXCODE CONFIGURED DEVICES ----
-
 #include "vex.h"
 #include "userFunctions.h"
 #include "autoFunctions.h"
@@ -27,51 +17,19 @@ vex::competition Competition;
 
 // define your global instances of motors and other devices here
 
-/*---------------------------------------------------------------------------*/
-/*                          Pre-Autonomous Functions                         */
-/*                                                                           */
-/*  You may want to perform some actions before the competition starts.      */
-/*  Do them in the following function.  You must return from this function   */
-/*  or the autonomous and usercontrol tasks will not be started.  This       */
-/*  function is only called once after the V5 has been powered on and        */
-/*  not every time that the robot is disabled.                               */
-/*---------------------------------------------------------------------------*/
-
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  // All activities that occur before the competition starts
-  // Example: clearing encoders, setting servo positions, ...
 }
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              Autonomous Task                              */
-/*                                                                           */
-/*  This task is used to control your robot during the autonomous phase of   */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*---------------------------------------------------------------------------*/
 
-void auton(void)
+void auton(void) //Change the color of Autonomous 
 {
   Brain.Screen.newLine();
-  autonBlue();
+  redAuto();
 }
 
-
-
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              User Control Task                            */
-/*                                                                           */
-/*  This task is used to control your robot during the user control phase of */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*---------------------------------------------------------------------------*/
 
 void userControl( void )
 {
@@ -88,6 +46,11 @@ void userControl( void )
       int Ax3Pos = Controller1.Axis3.position();
 
       joyStickDrive( Ax2Pos,  Ax3Pos);
+
+      if(Controller1.ButtonLeft.pressing())
+      {
+        redAuto();
+      }
       
   }
 
@@ -100,8 +63,8 @@ void userControl( void )
 //
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(auton);
-  Competition.drivercontrol(userControl);
+  Competition.autonomous( auton );
+  Competition.drivercontrol( userControl );
 
   // Run the pre-autonomous function.
   pre_auton();

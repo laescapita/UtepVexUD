@@ -12,7 +12,7 @@ void clawClose()
     ClawLeftMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
     ClawRightMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
 }
-
+ 
 void clawStop()
 {
   ClawLeftMotor.stop();

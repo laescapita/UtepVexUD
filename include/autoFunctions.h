@@ -12,7 +12,7 @@ void moveForward(double velocity, double distance, rotationUnits rev)
     BLeftMotor.spin(vex::directionType::fwd, velocity, vex::velocityUnits::rpm);
     
   }
-
+ 
   FRightMotor.stop();
   FLeftMotor.stop();
   BRightMotor.stop();
@@ -37,19 +37,7 @@ void moveBack(double velocity, double distance, rotationUnits rev)
   BLeftMotor.stop();
 } 
 
-void moveForward(double velocity, double seconds)
-{ 
-  Brain.resetTimer();
-  double startTime = Brain.timer(vex::timeUnits::sec);
-  while(startTime <= seconds)
-  {
-    FRightMotor.spin(vex::directionType::fwd, velocity, vex::velocityUnits::rpm);
-    FLeftMotor.spin(vex::directionType::fwd, velocity, vex::velocityUnits::rpm);
-  }
-
-}
-
-void autonBlue(void) {
+void blueAuto(void) {
 
   Brain.Screen.print("Blue Autonmous is-a-go");
 
@@ -61,7 +49,7 @@ void autonBlue(void) {
   Brain.Screen.print("Autonmous has ended");
 }
 
-void autonRed(void) {
+void redAuto(void) {
   
   Brain.Screen.print("Red Autonmous is-a-go");
 
