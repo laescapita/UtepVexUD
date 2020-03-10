@@ -14,9 +14,9 @@ motor BLeftMotor = motor(PORT13, ratio18_1, false);
 motor BRightMotor = motor(PORT2, ratio18_1, true);
 motor LeftLiftMotor = motor(PORT9,ratio18_1,false);
 motor RightLiftMotor = motor(PORT7,ratio18_1,true);
-motor ClawLeftMotor = motor(PORT8,ratio18_1,false);
-motor ClawRightMotor = motor(PORT12,ratio18_1,true);
-inertial Balance = inertial(PORT3);
+motor intakeLeftMotor = motor(PORT14,ratio18_1,false);
+motor intakeRightMotor = motor(PORT5,ratio18_1,true);
+inertial Balance = inertial(PORT4);
 
 controller Controller1 = controller(primary);
 

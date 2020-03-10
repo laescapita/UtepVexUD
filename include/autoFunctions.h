@@ -99,7 +99,7 @@ void redAuto(void) {
 
   moveForward(50, 3, rev);
 
-  moveBack(50, 2, rev);
+  
 
   Brain.Screen.newLine();
   Brain.Screen.print("Autonmous has ended");
