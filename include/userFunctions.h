@@ -1,22 +1,22 @@
 #include "vex.h"
 #include "robot-config.h"
 
-void clawOpen() 
+void pull() 
 { 
-    ClawLeftMotor.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
-    ClawRightMotor.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
+    intakeLeftMotor.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
+    intakeRightMotor.spin(vex::directionType::fwd, 75, vex::velocityUnits::pct);
 } 
 
-void clawClose()
+void push()
 { 
-    ClawLeftMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
-    ClawRightMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
+    intakeLeftMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
+    intakeRightMotor.spin(vex::directionType::rev,75, vex::velocityUnits::pct);
 }
  
-void clawStop()
+void intakeStop()
 {
-  ClawLeftMotor.stop();
-  ClawRightMotor.stop();
+  intakeLeftMotor.stop();
+  intakeRightMotor.stop();
 }
 
 void liftUp()
@@ -51,15 +51,15 @@ void joyStickDrive(int Ax2Pos,int Ax3Pos)
       
       if(Controller1.ButtonL1.pressing())
       {
-        clawClose();
+        pull();
       }
       else if(Controller1.ButtonL2.pressing())
       {
-        clawOpen();
+        push();
       }
       else
       {
-        clawStop();
+        intakeStop();
       }
 
       if(Controller1.ButtonR2.pressing())
@@ -74,6 +74,5 @@ void joyStickDrive(int Ax2Pos,int Ax3Pos)
       {
         liftStop();
       }
-
 
 }

@@ -9,8 +9,8 @@ extern motor BLeftMotor;
 extern motor BRightMotor;
 extern motor LeftLiftMotor;
 extern motor RightLiftMotor;
-extern motor ClawLeftMotor;
-extern motor ClawRightMotor;
+extern motor intakeLeftMotor;
+extern motor intakeRightMotor;
 extern controller Controller1;
 
 /**
