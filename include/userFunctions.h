@@ -44,19 +44,16 @@ void joyStickDrive(int Ax2Pos,int Ax3Pos)
     BRightMotor.spin(vex::directionType::fwd, (Ax2Pos )/2, vex::velocityUnits::pct);
     BLeftMotor.spin(vex::directionType::fwd, (Ax3Pos )/2, vex::velocityUnits::pct);
 
-    // if(Controller1.ButtonDown.pressing())
-      // {
-      //   autonBlue();
-      // }
-      
       if(Controller1.ButtonL1.pressing())
-      {
-        pull();
+      {   
+       pull();
       }
+
       else if(Controller1.ButtonL2.pressing())
       {
         push();
       }
+
       else
       {
         intakeStop();

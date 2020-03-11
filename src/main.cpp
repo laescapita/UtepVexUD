@@ -44,8 +44,9 @@ void userControl( void )
   {
       int Ax2Pos = Controller1.Axis2.position();
       int Ax3Pos = Controller1.Axis3.position();
+     
 
-      joyStickDrive( Ax2Pos,  Ax3Pos);
+      joyStickDrive(Ax2Pos,  Ax3Pos);
 
       if(Controller1.ButtonLeft.pressing())
       {
