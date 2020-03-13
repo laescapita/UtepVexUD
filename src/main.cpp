@@ -48,7 +48,7 @@ void userControl( void )
 
       joyStickDrive(Ax2Pos,  Ax3Pos);
 
-      if(Controller1.ButtonLeft.pressing())
+      if(Controller1.ButtonB.pressing())
       {
         redAuto();
       }
